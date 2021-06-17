@@ -15,11 +15,9 @@ public class ThirdMax {
             return Math.max(nums[0], nums[1]);
 
         // 定义三个临时变量，分别保存最大值，第二大值，第三大值
-        int first = Integer.MIN_VALUE;
-        int second = Integer.MIN_VALUE;
-        int third = Integer.MIN_VALUE;
-
-        boolean modify = false;
+        int first = nums[0];
+        long second = Long.MIN_VALUE;
+        long third = Long.MIN_VALUE;
 
         // 循环数组，依次更新，每次更新顺序为 third，second，first
         for (int n : nums) {
@@ -29,34 +27,34 @@ public class ThirdMax {
                 third = second;
                 second = first;
                 first = n;
-                modify = true;
             } else if (n > second && n != first) {
                 // 大于第二大值，但是不等于最大值，等于最大值无需更新
                 third = second;
                 second = n;
-                modify = true;
-            } else if (n >= third && n != first && n != second) {
+            } else if (n > third && n != first && n != second) {
                 // 大于第三大值，但是不等于第一，第二大值
                 third = n;
-                modify = true;
             }
         }
-        return modify && third != Integer.MIN_VALUE ? third : first;
+        return third != Long.MIN_VALUE ? (int) third : first;
     }
 
     public static void main(String[] args) {
-//        int[] arr = {1, 5, 6, 2};
-//        System.out.println(thirdMax(arr));
-//
-//
-//        int[] arr1 = {1, 5, 6, 2, Integer.MAX_VALUE};
-//        System.out.println(thirdMax(arr1));
-//
-//        int[] arr2 = {1, 1, 2};
-//        System.out.println(thirdMax(arr2));
+        int[] arr = {1, 5, 6, 2};
+        System.out.println(thirdMax(arr));
+
+
+        int[] arr1 = {1, 5, 6, 2, Integer.MAX_VALUE};
+        System.out.println(thirdMax(arr1));
+
+        int[] arr2 = {1, 1, 2};
+        System.out.println(thirdMax(arr2));
 
         int[] arr3 = {1, 2, Integer.MIN_VALUE};
         System.out.println(thirdMax(arr3));
+
+        int[] arr4 = {1, Integer.MIN_VALUE, Integer.MIN_VALUE};
+        System.out.println(thirdMax(arr4));
     }
 }
 
