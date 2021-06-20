@@ -7,16 +7,58 @@ package me.arithmetic.array;
  */
 public class MaximumProduct {
 
-    // 类似 414.第三大的数
-    // 三个数的最大乘积
-    // 假设数组是有序
-    // 如果元素都是非负数或者都是非正数，最大乘积=最大的三个数的乘积
-    // 如果元素有正有负，最大乘积既可能是三个最大正数的乘积，也可能是两个最小负数（即绝对值最大）与最大正数的乘积
-
-    // 给数组排序后，分别求出三个最大正数的乘积，以及两个最小负数与最大正数的乘积，二者之间的最大值即为所求答案。
+//     类似 414.第三大的数
+//     三个数的最大乘积
+//     假设数组是有序
+//     如果元素都是非负数或者都是非正数，最大乘积=最大的三个数的乘积
+//     如果元素有正有负，最大乘积既可能是三个最大正数的乘积，也可能是两个最小负数（即绝对值最大）与最大正数的乘积
+//
+//     分别求出三个最大正数的乘积，以及两个最小负数与最大正数的乘积，二者之间的最大值即为所求答案。
     public static int maximumProduct(int[] nums) {
 
-        return 0;
+        // 定义三个临时变量，分别保存最大值，第二大值，第三大值
+        int first = Integer.MIN_VALUE;
+        int second = Integer.MIN_VALUE;
+        int third = Integer.MIN_VALUE;
+
+        int minOne = Integer.MAX_VALUE;
+        int minTow = Integer.MAX_VALUE;
+
+        for (int num : nums) {
+
+            // 循环数组，依次更新，每次更新顺序为 third，second，first
+            // 找到最大三个数
+            if (num > first) {
+                third = second;
+                second = first;
+                first = num;
+            } else if (num > second) {
+                third = second;
+                second = num;
+            } else if (num > third) {
+                third = num;
+            }
+
+            // 找到最小两个数
+            if (num < minOne) {
+                minTow = minOne;
+                minOne = num;
+            } else if (num < minTow) {
+                minTow = num;
+            }
+
+        }
+
+        return Math.max(minOne * minTow * first, first * second * third);
+    }
+
+    public static void main(String[] args) {
+
+//        int[] arr = {1, 2, 3, 4};
+
+        int[] arr = {-1, -2, -3};
+
+        System.out.println(maximumProduct(arr));
     }
 }
 
@@ -42,7 +84,7 @@ public class MaximumProduct {
 提示：
 
 3 <= nums.length <= 104
--1000 <= nums[i] <= 1000
+-1000 <= num <= 1000
 
 来源：力扣（LeetCode）
 链接：https://leetcode-cn.com/problems/maximum-product-of-three-numbers
