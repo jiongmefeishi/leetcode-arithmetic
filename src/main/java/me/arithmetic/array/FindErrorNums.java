@@ -13,21 +13,30 @@ public class FindErrorNums {
     // 再次遇到时，查询已经变为负数，那么这个数就是重复数
     public static int[] findErrorNums2(int[] nums) {
 
-        // 1 2 4 4 3 3 4
-        // -1 -2
-        // 4
+        //        1 2 4 3 3 3 4
+        // a[0]  -1 2 4 3 3 3 4
+        // a[1]  -1 -2 4 3 3 3 4
+        // a[2]  -1 -2 4 -3 3 3 4
 
         int[] res = new int[2];
         for (int num : nums) {
             if (nums[Math.abs(num) - 1] < 0) {
                 // 重复数
-                res[0] = num;
+                res[0] = Math.abs(num);
             } else {
                 // 第一次访问元素，置为0
                 nums[Math.abs(num) - 1] *= -1;
             }
         }
 
+        // 遍历数组，找到数组中正值元素所在位置，即为缺失数
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] > 0) {
+                res[1] = i + 1;
+            }
+        }
+
+        return res;
     }
 
     // 辅助数组
@@ -59,9 +68,10 @@ public class FindErrorNums {
 
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 2, 4};
-//        int[] arr = {2, 2};
+//        int[] arr = {1, 2, 2, 4};
+        int[] arr = {2, 2};
         System.out.println(Arrays.toString(findErrorNums1(arr)));
+        System.out.println(Arrays.toString(findErrorNums2(arr)));
     }
 }
 
