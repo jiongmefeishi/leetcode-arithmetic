@@ -15,8 +15,10 @@ public class FindDuplicates {
 
         for (int n : nums) {
             if (nums[Math.abs(n) - 1] < 0) {
+                // 再次遇到，则为重复数
                 res.add(Math.abs(n));
             } else {
+                // 首次遇到，将元素对应位置数反转
                 nums[Math.abs(n) - 1] *= -1;
             }
 
