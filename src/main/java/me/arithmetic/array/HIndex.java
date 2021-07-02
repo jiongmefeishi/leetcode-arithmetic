@@ -12,6 +12,12 @@ public class HIndex {
 
     public static int hIndex(int[] citations) {
 
+        if (citations.length == 1 && citations[0] > 0) {
+            return 1;
+        } else if (citations.length == 1 && citations[0] == 0) {
+            return 0;
+        }
+
         // 3 0 6 1 5
         // 首先 h 指数只可能是 [1~N]
         Map<Integer, Integer> count = new HashMap<>();
@@ -28,19 +34,26 @@ public class HIndex {
         }
 
         for (int i = 1; i <= citations.length; i++) {
-            if (i == count.get(i)) {
-                return i;
+            if (i <= count.get(i)) {
+                continue;
             }
+            return i - 1;
         }
 
         return 0;
     }
 
     public static void main(String[] args) {
-//        int[] nums = {3, 0, 6, 1, 5};
-//        int[] nums = {3, 0};
-        int[] nums = {1, 3, 1};
+        int[] nums = {3, 0, 6, 1, 5};
+        int[] nums1 = {3, 0};
+        int[] nums2 = {1, 3, 1};
+        int[] nums3 = {1};
+        int[] nums4 = {11, 13};
         System.out.println(hIndex(nums));
+        System.out.println(hIndex(nums1));
+        System.out.println(hIndex(nums2));
+        System.out.println(hIndex(nums3));
+        System.out.println(hIndex(nums4));
     }
 }
 
