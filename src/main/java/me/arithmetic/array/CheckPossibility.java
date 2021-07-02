@@ -4,6 +4,7 @@ package me.arithmetic.array;
  * @author: zqtao
  * @date: 2021/7/2 17:25
  * @description: 665. 非递减数列
+ * https://leetcode-cn.com/problems/non-decreasing-array/
  */
 public class CheckPossibility {
 
