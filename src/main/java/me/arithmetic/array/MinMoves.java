@@ -9,6 +9,8 @@ import java.util.Arrays;
  */
 public class MinMoves {
 
+
+    //
     public static int minMoves2(int[] nums) {
         Arrays.sort(nums);
         int count = 0;
@@ -19,10 +21,9 @@ public class MinMoves {
     }
 
 
-    // 排序后计算跨步，最大值到最小值跨步累加就是操作次数
-//    时间复杂度：O(nlog(n))。 排序需要 O(nlog(n)) 的时间。
-//
-//    空间复杂度：O(1)。不需要额外空间。
+    //排序后计算跨步，最大值到最小值跨步累加就是操作次数
+    //时间复杂度：O(nlog(n))。 排序需要 O(nlog(n)) 的时间。
+    //空间复杂度：O(1)。不需要额外空间。
     public static int minMoves(int[] nums) {
         // 4 1 9 3
 
