@@ -9,17 +9,52 @@ package me.arithmetic.array;
 public class CheckPossibility {
 
     // nums[i] <= nums[i + 1]
-    public boolean checkPossibility(int[] nums) {
+    public static boolean checkPossibility(int[] nums) {
 
         // 4 2 3 4
-        // 从后往前遍历，以a[i] 为开始  a[i]~a[N-1] 范围内的数都是递增序列
-        // a[i] < L ? L--
-        // a[i] >= L ? 更新 a[i] = a[L]-1, L--
+        // 从右往左遍历，以a[i] 为开始  a[i]~a[N-1] 范围内的数都是递增序列
+        // a[i] < a[L] ? L--
+        // a[i] >= a[L] ? 更新 a[i] = a[L]-1, L--
 
-        // 从前往后遍历，以a[i] 为结束  a[0]~a[i]   范围内的数都是递增序列
-        // a[i] < R ? R++
-        // a[i] >= R ? 更新 a[i] = a[R]+1, R++
+        // 从左往右遍历，以a[i] 为结束  a[0]~a[i]   范围内的数都是递增序列
+        // a[i] < a[R] ? R++
+        // a[i] >= a[R] ? 更新 a[i] = a[R]+1, R++
 
+        int L = nums.length - 1;
+        int R = 0;
+
+        int countR = 0;
+        // 从左往右遍历
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] >= nums[R]) {
+                nums[i] = nums[R] + 1;
+                countR++;
+            }
+            R++;
+        }
+
+        int countL = 0;
+        // 从右往左遍历
+        for (int i = L; i >= 0; i--) {
+            if (nums[i] >= nums[L]) {
+                nums[i] = nums[L] - 1;
+                countL++;
+            }
+            L--;
+        }
+
+        if (countL <= 1 || countR <= 1) {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4};
+
+        System.out.println(checkPossibility(arr));
     }
 
 }
