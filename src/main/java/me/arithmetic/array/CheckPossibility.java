@@ -1,5 +1,7 @@
 package me.arithmetic.array;
 
+import java.util.Arrays;
+
 /**
  * @author: zqtao
  * @date: 2021/7/2 17:25
@@ -20,23 +22,26 @@ public class CheckPossibility {
         // a[i] < a[R] ? R++
         // a[i] >= a[R] ? 更新 a[i] = a[R]+1, R++
 
+        int[] copy = Arrays.copyOf(nums, nums.length);
+
         int L = nums.length - 1;
         int R = 0;
 
         int countR = 0;
         // 从左往右遍历
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] >= nums[R]) {
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < nums[R]) {
                 nums[i] = nums[R] + 1;
                 countR++;
             }
             R++;
         }
 
+        nums = copy;
         int countL = 0;
         // 从右往左遍历
-        for (int i = L; i >= 0; i--) {
-            if (nums[i] >= nums[L]) {
+        for (int i = L - 1; i >= 0; i--) {
+            if (nums[i] > nums[L]) {
                 nums[i] = nums[L] - 1;
                 countL++;
             }
@@ -52,8 +57,10 @@ public class CheckPossibility {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 2, 3, 4};
-
+//        int[] arr = {1, 2, 3, 4};
+//        int[] arr = {4, 1, 2, 3};
+//        int[] arr = {4};
+        int[] arr = {7, 5, 3, 6};
         System.out.println(checkPossibility(arr));
     }
 
