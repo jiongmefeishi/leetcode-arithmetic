@@ -10,8 +10,64 @@ import java.util.Arrays;
  */
 public class CheckPossibility {
 
-    // nums[i] <= nums[i + 1]
+
+    // 提前结束
     public static boolean checkPossibility(int[] nums) {
+
+        int countR = 0;
+        // 从左往右遍历
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] < nums[i - 1]) {
+                // 7 1 2 3 5
+                // 1 2 4 7 6
+                if (i == 1 || nums[i] >= nums[i - 2]) {
+                    nums[i - 1] = nums[i];
+                } else {
+                    nums[i] = nums[i - 1];
+                }
+                countR++;
+            }
+        }
+
+        return countR <= 1;
+    }
+
+
+    // 省去 O(n) 空间，只更新边界
+    public static boolean checkPossibility3(int[] nums) {
+
+        // 更新 R L 边界
+        // 从左遍历 以 R 为界，左边满足非递减数列
+        // 从右遍历 以 L 为界，右边满足非递减数列
+
+        int L = nums[nums.length - 1];
+        int R = nums[0];
+
+        int countR = 0;
+        // 从左往右遍历
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < R) {
+                countR++;
+                continue;
+            }
+            R = nums[i];
+        }
+
+        int countL = 0;
+        // 从右往左遍历
+        for (int i = nums.length - 1; i >= 0; i--) {
+            if (nums[i] > L) {
+                countL++;
+                continue;
+            }
+            L = nums[i];
+        }
+
+        return countL <= 1 || countR <= 1;
+    }
+
+    // nums[i] <= nums[i + 1]
+    public static boolean checkPossibility2(int[] nums) {
 
         // 4 2 3 4
         // 从右往左遍历，以a[i] 为开始  a[i]~a[N-1] 范围内的数都是递增序列
@@ -31,7 +87,7 @@ public class CheckPossibility {
         // 从左往右遍历
         for (int i = 1; i < nums.length; i++) {
             if (nums[i] < nums[R]) {
-                nums[i] = nums[R] + 1;
+                nums[i] = nums[R];
                 countR++;
             }
             R++;
@@ -42,18 +98,13 @@ public class CheckPossibility {
         // 从右往左遍历
         for (int i = L - 1; i >= 0; i--) {
             if (nums[i] > nums[L]) {
-                nums[i] = nums[L] - 1;
+                nums[i] = nums[L];
                 countL++;
             }
             L--;
         }
 
-        if (countL <= 1 || countR <= 1) {
-            return true;
-        }
-
-        return false;
-
+        return countL <= 1 || countR <= 1;
     }
 
     public static void main(String[] args) {
