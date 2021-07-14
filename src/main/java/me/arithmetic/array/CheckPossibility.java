@@ -10,8 +10,6 @@ import java.util.Arrays;
  */
 public class CheckPossibility {
 
-
-    // 提前结束
     public static boolean checkPossibility(int[] nums) {
 
         int countR = 0;
