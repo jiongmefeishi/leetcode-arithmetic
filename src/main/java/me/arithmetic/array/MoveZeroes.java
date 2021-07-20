@@ -16,7 +16,7 @@ public class MoveZeroes {
     // 0 1 0 3 12       L=0, R=0 初始化
     // 0 1 0 3 12       L=0, R=1 交换 arr[0], arr[1]
     // 1 0 0 3 12       L=1, R=3 交换 arr[1], arr[2]
-    // 1 3 0 0 12       L=1, R=3 交换 arr[2], arr[4]
+    // 1 3 0 0 12       L=2, R=4 交换 arr[2], arr[4]
     // 1 3 12 0 0
     public static void moveZeroes(int[] nums) {
         int L = 0;
