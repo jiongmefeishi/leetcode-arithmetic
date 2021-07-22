@@ -2,40 +2,28 @@ package me.arithmetic.array;
 
 import java.util.Arrays;
 
-/**
- * @author: zqtao
- * @date: 2021/7/21 13:55
- * @description: 189. 旋转数组
- */
 public class RotateArray {
 
-    // 1 2 3 4 5 6 7        k=3
-    // 5 6 7 1 2 3 4
-
-    // 辅助数组
-    // 第一步，先组装 [N-k, N-1] 范围内的被旋转数
-    // 第二步，再组装 [0, N-k-1] 范围内的未旋转数
     public static void rotate(int[] nums, int k) {
-        int N = nums.length;
-        int[] help = new int[N];
-        int j = 0;
-        // 组装 [N-k, N-1] 范围内的被旋转数
-        for (int i = N - k; i < N; i++) {
-            help[j++] = nums[i];
+        int n = nums.length;
+        int[] help = new int[n];
+        for (int i = 0; i < n; ++i) {
+            // 旋转 k, 相当于 nums[i] 元素向后跨步 k 个下标
+            // nums 数组下标范围是 [0, N-1]
+            // 跨步后下标超过N-1，从 0 继续跨步
+            // 计算 nums[i] 旋转后在辅助数组中的相对位置
+            int m = (i + k) % n;
+            help[m] = nums[i];
         }
-
-        // 组装 [0, N-k-1] 范围内的未旋转数
-        for (int i = 0; i < N - k; i++) {
-            help[j++] = nums[i];
-        }
-
-        // 拷贝回原数组
-        System.arraycopy(help, 0, nums, 0, N);
+        System.arraycopy(help, 0, nums, 0, n);
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7};
-        rotate(nums, 3);
+//        int[] nums = new int[]{1, 2, 3};
+//        int[] nums = new int[]{1, 2, 3, 4, 5, 6, 7};
+//        int[] nums = {-1, -100, 3, 99};
+        int[] nums = {-1};
+        rotate(nums, 2);
         System.out.println(Arrays.toString(nums));
     }
 
