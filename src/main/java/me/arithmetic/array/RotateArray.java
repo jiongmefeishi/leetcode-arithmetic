@@ -4,7 +4,54 @@ import java.util.Arrays;
 
 public class RotateArray {
 
-    public static void rotate(int[] nums, int k) {
+
+    public void rotate(int[] nums, int k) {
+
+        // 计算尾部需要移至头部元素个数
+        k %= nums.length;
+
+        int N = nums.length;
+        int j = 0;
+        int[] help = new int[nums.length];
+
+        // 归位需要移至头部的元素
+        for (int i = N - k; i < N; i++) {
+            help[j++] = nums[i];
+        }
+
+        // 归位需要移至尾部的元素
+        for (int i = 0; i < N - k; i++) {
+            help[j++] = nums[i];
+        }
+
+        System.arraycopy(help, 0, nums, 0, N);
+    }
+
+public void rotate3(int[] nums, int k) {
+
+    // 计算尾部需要移至头部元素个数
+    k %= nums.length;
+
+    // 翻转数组所有元素
+    reverse(nums, 0, nums.length - 1);
+    // 翻转已经移至头部的元素
+    reverse(nums, 0, k - 1);
+    // 翻转已经移至尾部的元素
+    reverse(nums, k, nums.length - 1);
+}
+
+// 翻转 [start, end] 范围内的数
+public void reverse(int[] nums, int start, int end) {
+    while (start < end) {
+        int temp = nums[start];
+        nums[start] = nums[end];
+        nums[end] = temp;
+        start += 1;
+        end -= 1;
+    }
+}
+
+    public static void rotate2(int[] nums, int k) {
         int n = nums.length;
         int[] help = new int[n];
         for (int i = 0; i < n; ++i) {
