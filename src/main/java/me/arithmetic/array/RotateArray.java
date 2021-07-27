@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class RotateArray {
 
 
-    public void rotate(int[] nums, int k) {
+    public static void rotate(int[] nums, int k) {
 
         // 计算尾部需要移至头部元素个数
         k %= nums.length;
