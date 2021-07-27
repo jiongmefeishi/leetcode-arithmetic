@@ -14,11 +14,13 @@ public class RotateArray {
         int j = 0;
         int[] help = new int[nums.length];
 
+        // 归位区域二
         // 归位需要移至头部的元素
         for (int i = N - k; i < N; i++) {
             help[j++] = nums[i];
         }
 
+        // 归位区域一
         // 归位需要移至尾部的元素
         for (int i = 0; i < N - k; i++) {
             help[j++] = nums[i];
