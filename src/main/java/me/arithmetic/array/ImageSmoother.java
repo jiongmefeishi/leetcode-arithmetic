@@ -9,6 +9,71 @@ import java.util.Arrays;
  */
 public class ImageSmoother {
 
+    public static int[][] imageSmoother2(int[][] img) {
+
+        // 二维数组行数
+        int rowNums = img.length;
+        // 二维数组列数
+        int colNums = img[0].length;
+
+        int[][] res = new int[rowNums][colNums];
+
+
+        for (int i = 0; i < rowNums; i++) {
+
+            for (int j = 0; j < colNums; j++) {
+                int count = 1;
+                int sum = img[i][j];
+
+                // a[i][j]
+                // 判断左方是否存在
+                if (j - 1 >= 0) {
+                    count++;
+                    sum += img[i][j - 1];
+                }
+                // 判断左上是否存在
+                if (i - 1 >= 0 && j - 1 >= 0) {
+                    count++;
+                    sum += img[i - 1][j - 1];
+                }
+                // 判断上方是否存在
+                if (i - 1 >= 0) {
+                    count++;
+                    sum += img[i - 1][j];
+                }
+                // 判断右上是否存在
+                if (i - 1 >= 0 && j + 1 < colNums) {
+                    count++;
+                    sum += img[i - 1][j + 1];
+                }
+                // 判断右方是否存在
+                if (j + 1 < colNums) {
+                    count++;
+                    sum += img[i][j + 1];
+                }
+                // 判断右下是否存在
+                if (i + 1 < rowNums && j + 1 < colNums) {
+                    count++;
+                    sum += img[i + 1][j + 1];
+                }
+                // 判断下方是否存在
+                if (i + 1 < rowNums) {
+                    count++;
+                    sum += img[i + 1][j];
+                }
+                // 判断左下是否存在
+                if (i + 1 < rowNums && j - 1 >= 0) {
+                    count++;
+                    sum += img[i + 1][j - 1];
+                }
+
+                res[i][j] = (sum / count);
+            }
+        }
+
+        return res;
+    }
+
     // a[i][j]
     // 判断左方是否存在
     // 判断左上是否存在
@@ -85,9 +150,9 @@ public class ImageSmoother {
 
     public static void main(String[] args) {
         int[][] img = new int[3][];
-        img[0] = new int[]{1, 1, 1};
-        img[1] = new int[]{1, 0, 1};
-        img[2] = new int[]{1, 1, 1};
+        img[0] = new int[]{1, 1, 5, 2};
+        img[1] = new int[]{0, 5, 3, 3};
+        img[2] = new int[]{9, 2, 2, 1};
 
         int[][] res = imageSmoother(img);
 
