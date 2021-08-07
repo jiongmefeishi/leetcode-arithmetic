@@ -22,50 +22,35 @@ public class ImageSmoother {
         for (int i = 0; i < rowNums; i++) {
 
             for (int j = 0; j < colNums; j++) {
-                int count = 1;
-                int sum = img[i][j];
 
-                // a[i][j]
-                // 判断左方是否存在
-                if (j - 1 >= 0) {
-                    count++;
-                    sum += img[i][j - 1];
+                // 当前战士 a[i][j]
+                // 划分小型阵列，找到阵列边界
+                // 判断前后左右是否有队列
+
+                // 前方队列
+                int si = i - 1;
+                // 后方队列
+                int ei = i + 1;
+                // 左边队列
+                int sj = j - 1;
+                // 右边队列
+                int ej = j + 1;
+
+                int count = 0;
+                int sum = 0;
+
+                // 报数
+                for (int rowI = si; rowI <= ei; rowI++) {
+                    for (int colI = sj; colI <= ej; colI++) {
+                        // 判断小型阵列是否在大阵列内
+                        // 只有在阵列内，才是有效阵列
+                        if (rowI >= 0 && rowI < rowNums && colI >= 0 && colI < colNums) {
+                            sum += img[rowI][colI];
+                            count++;
+                        }
+                    }
                 }
-                // 判断左上是否存在
-                if (i - 1 >= 0 && j - 1 >= 0) {
-                    count++;
-                    sum += img[i - 1][j - 1];
-                }
-                // 判断上方是否存在
-                if (i - 1 >= 0) {
-                    count++;
-                    sum += img[i - 1][j];
-                }
-                // 判断右上是否存在
-                if (i - 1 >= 0 && j + 1 < colNums) {
-                    count++;
-                    sum += img[i - 1][j + 1];
-                }
-                // 判断右方是否存在
-                if (j + 1 < colNums) {
-                    count++;
-                    sum += img[i][j + 1];
-                }
-                // 判断右下是否存在
-                if (i + 1 < rowNums && j + 1 < colNums) {
-                    count++;
-                    sum += img[i + 1][j + 1];
-                }
-                // 判断下方是否存在
-                if (i + 1 < rowNums) {
-                    count++;
-                    sum += img[i + 1][j];
-                }
-                // 判断左下是否存在
-                if (i + 1 < rowNums && j - 1 >= 0) {
-                    count++;
-                    sum += img[i + 1][j - 1];
-                }
+
 
                 res[i][j] = (sum / count);
             }
@@ -159,6 +144,23 @@ public class ImageSmoother {
         for (int i = 0; i < res.length; i++) {
             System.out.println(Arrays.toString(res[i]));
         }
+        System.out.println("==========");
+
+        int[][] res2 = imageSmoother2(img);
+
+        for (int i = 0; i < res2.length; i++) {
+            System.out.println(Arrays.toString(res2[i]));
+        }
+
+        /*
+[1, 2, 3, 3]
+[3, 3, 2, 2]
+[4, 3, 2, 2]
+==========
+[1, 2, 2, 0]
+[2, 2, 2, 0]
+[0, 0, 0, 0]
+         */
     }
 
 }
