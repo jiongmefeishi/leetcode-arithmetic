@@ -26,7 +26,7 @@ public class MinDistance3 {
         dp[0][0] = 0;
 
         // base case 2
-        // dp[0][i]：表示 w1[0...i] 编辑成 w2 空串的代价
+        // dp[i][0]：表示 w1[0...i] 编辑成 w2 空串的代价
         for (int i = 1; i <= word1.length(); i++) {
             dp[i][0] = i;
         }

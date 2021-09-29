@@ -63,8 +63,7 @@ public class MinDistance4 {
                 int delete = dp[j] + 1;
 
                 // 选择最小编辑代价
-                dp[j] = Math.min(replace, insert);
-                dp[j] = Math.min(dp[j], delete);
+                dp[j] = Math.min(Math.min(insert, delete), replace);
 
                 // 更新左上角状态
                 pre = tmp;
