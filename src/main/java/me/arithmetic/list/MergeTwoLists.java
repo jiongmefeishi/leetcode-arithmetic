@@ -1,4 +1,4 @@
-package me.arithmetic.tree;
+package me.arithmetic.list;
 
 /**
  * Definition for singly-linked list.

@@ -1,4 +1,4 @@
-package me.arithmetic.tree;
+package me.arithmetic.list;
 
 public class ListNode {
     int val;
