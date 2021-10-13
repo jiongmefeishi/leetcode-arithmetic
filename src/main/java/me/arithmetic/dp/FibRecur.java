@@ -1,4 +1,4 @@
-package me.arithmetic.dp.day0930;
+package me.arithmetic.dp;
 
 // 509. 斐波那契数
 public class FibRecur {

@@ -1,4 +1,4 @@
-package me.arithmetic.dp.day0930;
+package me.arithmetic.dp;
 
 
 import java.util.HashMap;
