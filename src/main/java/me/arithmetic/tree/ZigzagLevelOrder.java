@@ -1,43 +1,48 @@
 package me.arithmetic.tree;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class ZigzagLevelOrder {
 
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
-        List<List<Integer>> ans = new LinkedList<List<Integer>>();
+
+        List<List<Integer>> res = new LinkedList<>();
         if (root == null) {
-            return ans;
+            return res;
         }
 
-        Queue<TreeNode> nodeQueue = new LinkedList<TreeNode>();
-        nodeQueue.offer(root);
+        // 申明队列存储每次入队的某层节点
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(root);
         boolean isOrderLeft = true;
 
-        while (!nodeQueue.isEmpty()) {
-            Deque<Integer> levelList = new LinkedList<Integer>();
-            int size = nodeQueue.size();
-            for (int i = 0; i < size; ++i) {
-                TreeNode curNode = nodeQueue.poll();
+        while (!queue.isEmpty()) {
+            // 存储当前层节点值
+            Deque<Integer> levelNode = new LinkedList<>();
+
+            // 当前层节点个数
+            int levelNodeSize = queue.size();
+            for (int i = 0; i < levelNodeSize; i++) {
+                TreeNode poll = queue.poll();
+
+                // 存储当前节点入层
                 if (isOrderLeft) {
-                    levelList.offerLast(curNode.val);
+                    levelNode.offerLast(poll.val);
                 } else {
-                    levelList.offerFirst(curNode.val);
+                    levelNode.offerFirst(poll.val);
                 }
-                if (curNode.left != null) {
-                    nodeQueue.offer(curNode.left);
+
+                // 左右子节点存在，入队
+                if (poll.left != null) {
+                    queue.offer(poll.left);
                 }
-                if (curNode.right != null) {
-                    nodeQueue.offer(curNode.right);
+                if (poll.right != null) {
+                    queue.offer(poll.right);
                 }
             }
-            ans.add(new LinkedList<Integer>(levelList));
-            isOrderLeft = !isOrderLeft;
-        }
 
-        return ans;
+            res.add(new LinkedList<>(levelNode));
+        }
+        return res;
     }
 }
