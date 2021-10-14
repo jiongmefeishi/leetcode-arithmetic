@@ -3,11 +3,7 @@ package me.arithmetic.dp;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author: zqtao
- * @date: 2021/8/4 15:25
- * @description: 72. 编辑距离
- */
+// 编辑距离
 public class LT_2_MinDistanceByRecurAndMemory {
 
     // 暴力递归 + 备忘录

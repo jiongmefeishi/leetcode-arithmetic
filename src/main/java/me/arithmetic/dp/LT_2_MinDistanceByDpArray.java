@@ -1,11 +1,7 @@
 package me.arithmetic.dp;
 
 
-/**
- * @author: zqtao
- * @date: 2021/8/4 15:25
- * @description: 72. 编辑距离
- */
+// 编辑距离
 public class LT_2_MinDistanceByDpArray {
 
     // 动态规划压缩空间
@@ -57,7 +53,7 @@ public class LT_2_MinDistanceByDpArray {
                 }
 
                 // 选择插入操作
-                int insert = dp[j-1] + 1;
+                int insert = dp[j - 1] + 1;
 
                 // 选择删除操作
                 int delete = dp[j] + 1;

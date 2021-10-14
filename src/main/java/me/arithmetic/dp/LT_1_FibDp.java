@@ -1,7 +1,6 @@
 package me.arithmetic.dp;
 
-
-// 509. 斐波那契数
+//72. 编辑距离
 public class LT_1_FibDp {
 
     // 动态规划
