@@ -1,7 +1,7 @@
 package me.arithmetic.dp;
 
 // 最少找零张数，各种面额只有 1 张 dp[][]
-public class MinCoinsByDpMatrix {
+public class LT_4_MinCoinsByDpMatrix {
 
     public int minCoins(int[] coins, int aim) {
         if (coins == null || coins.length == 0) {

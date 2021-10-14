@@ -1,6 +1,6 @@
 package me.arithmetic.dp;
 // 最少找零张数，面额张数任意使用 dp[][]
-public class MinCoinsUnlimitedByDpMatrix {
+public class LT_4_MinCoinsUnlimitedByDpMatrix {
 
     public int minCoins(int[] coins, int aim) {
         if (coins == null || coins.length == 0) {

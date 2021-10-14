@@ -1,7 +1,7 @@
 package me.arithmetic.dp;
 
 // 最短路径和, 空间压缩，空间复杂度降为 O(min{M,N})
-public class MinPathSumByDpArray {
+public class LT_3_MinPathSumByDpArray {
 
     public int minPath(int[][] matrix) {
         if (matrix == null || matrix.length == 0 || matrix[0] == null || matrix[0].length == 0) {

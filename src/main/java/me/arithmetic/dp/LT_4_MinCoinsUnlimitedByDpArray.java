@@ -1,7 +1,7 @@
 package me.arithmetic.dp;
 
 // 最少找零张数，面额张数任意使用 dp[]
-public class MinCoinsUnlimitedByDpArray {
+public class LT_4_MinCoinsUnlimitedByDpArray {
 
     // 空间压缩
     public int minCoins(int[] coins, int aim) {

@@ -1,7 +1,7 @@
 package me.arithmetic.dp;
 
 // 最短路径和
-public class MinPathSumByDpMatrix {
+public class LT_3_MinPathSumByDpMatrix {
 
     // dp[][]
     public int minPath(int[][] matrix) {
