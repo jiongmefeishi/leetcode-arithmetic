@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 // 509. 斐波那契数
-public class FibRecurByMemory {
+public class LT_1_FibRecurByMemory {
 
     // 暴力递归 + 备忘录
     public static int fib(int n) {

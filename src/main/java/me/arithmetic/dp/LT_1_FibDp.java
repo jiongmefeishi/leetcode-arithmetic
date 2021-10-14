@@ -2,7 +2,7 @@ package me.arithmetic.dp;
 
 
 // 509. 斐波那契数
-public class FibDp {
+public class LT_1_FibDp {
 
     // 动态规划
     public static int fib(int n) {

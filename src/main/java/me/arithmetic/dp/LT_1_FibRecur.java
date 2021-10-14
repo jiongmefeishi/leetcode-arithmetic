@@ -1,7 +1,7 @@
 package me.arithmetic.dp;
 
 // 509. 斐波那契数
-public class FibRecur {
+public class LT_1_FibRecur {
 
     // 暴力递归
     public static int fib(int n) {

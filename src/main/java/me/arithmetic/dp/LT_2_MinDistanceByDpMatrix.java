@@ -6,7 +6,7 @@ package me.arithmetic.dp;
  * @date: 2021/8/4 15:25
  * @description: 72. 编辑距离
  */
-public class MinDistance3 {
+public class LT_2_MinDistanceByDpMatrix {
 
     // 动态规划
     public static int minDistance(String word1, String word2) {
