@@ -30,7 +30,6 @@ public class LT_4_MinCoinsUnlimitedByDpArray {
         // dp[j] = min{dp[j], dp[j-coins[i]] + 1}
         for (int i = 1; i < coins.length; i++) {
             for (int j = 1; j <= aim; j++) {
-                dp[0] = 0;
                 // 使用当前面额
                 int num = Integer.MAX_VALUE;
                 if (j - coins[i] >= 0 && dp[j - coins[i]] != Integer.MAX_VALUE) {

@@ -10,7 +10,7 @@
 
 | 算法方式          | 样例                                                         |
 | ----------------- | ------------------------------------------------------------ |
-| 动态规划          | [样例](./src/main/java/me/arithmetic/dp/LT_4_MinCoinsUnlimitedByDpArray.java) |
+| 动态规划          | [样例](./src/main/java/me/arithmetic/dp/LT_4_MinCoinsLimitedByDpMatrix.java) |
 | 动态规划+空间压缩 | [样例](./src/main/java/me/arithmetic/dp/LT_4_MinCoinsLimitedByDpArray.java) |
 
 
