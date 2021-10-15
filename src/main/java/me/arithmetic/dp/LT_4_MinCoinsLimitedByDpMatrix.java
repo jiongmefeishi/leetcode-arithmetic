@@ -9,6 +9,7 @@ public class LT_4_MinCoinsLimitedByDpMatrix {
         }
 
         // dp[][] ， dp[i][j]表示：在使用任意张 arr[0...i] 面值的银币下，组合出 aim 的最少张数
+        // 长度为 aim + 1 是因为需要考虑 aim=0 时候情况状态
         int[][] dp = new int[coins.length][aim + 1];
 
         // base case 1 j=0 找零 aim=0 情况下，张数为0
