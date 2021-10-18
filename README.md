@@ -4,6 +4,16 @@
 
 
 
+【最少找零种数】-【各种面额无线提供】
+
+| 算法方式          | 样例                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| 暴力递归          | [样例](./src/main/java/me/arithmetic/dp/LT_5_MinCoinsMethodUnlimitedByRecur.java) |
+| 暴力递归+备忘录   | [样例](./src/main/java/me/arithmetic/dp/LT_5_MinCoinsMethodUnlimitedByRecurAndMemory.java) |
+| 动态规划          | [样例](./src/main/java/me/arithmetic/dp/LT_5_MinCoinsMethodUnlimitedByDpMatrix.java) |
+| 动态规划+时间压缩 | [样例](./src/main/java/me/arithmetic/dp/LT_5_MinCoinsMethodUnlimitedByDpMatrixSimple.java) |
+| 动态规划+空间压缩 | [样例](./src/main/java/me/arithmetic/dp/LT_5_MinCoinsMethodUnlimitedByDpArray.java) |
+
 
 
 【最少找零张数】-【各种面额仅提供 `1 `张】
