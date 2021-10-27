@@ -17,7 +17,7 @@ public class LT_3_MinPathSumByDpMatrix {
         dp[0][0] = matrix[0][0];
 
         // base case 1：i=0, 从(0,0) 位置走到(0,j) 位置最小路径和
-        for (int j = 2; j < N; j++) {
+        for (int j = 1; j < N; j++) {
             dp[0][j] = dp[0][j - 1] + matrix[0][j];
         }
 

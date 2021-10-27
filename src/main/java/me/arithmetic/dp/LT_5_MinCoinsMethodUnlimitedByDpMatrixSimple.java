@@ -40,7 +40,7 @@ public class LT_5_MinCoinsMethodUnlimitedByDpMatrixSimple {
 
         for (int i = 1; i < coins.length; i++) {
             for (int j = 1; j <= aim; j++) {
-                dp[i][j] = dp[i - 1][j] + j - coins[i] >= 0 ? dp[i][j - coins[i]] : 0;
+                dp[i][j] = dp[i - 1][j] + (j - coins[i] >= 0 ? dp[i][j - coins[i]] : 0);
             }
         }
 
